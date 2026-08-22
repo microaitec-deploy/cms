@@ -50,7 +50,6 @@ const { docs, count } = await kernel.updateMany({
 })
 
 await kernel.deleteMany({ collection: 'comments', where: { spam: { equals: true } } })
- */
 
  await oneCms.subscribe("posts.create",(data)=>{
     console.log(data,"dddd")
@@ -67,3 +66,14 @@ await kernel.deleteMany({ collection: 'comments', where: { spam: { equals: true 
             collection: 'posts',
             data: { title: 'test', body: '…'},
             })
+ */
+
+ const res=  await  oneCms.call("cms.find",{
+  collection: 'devices',
+  where: { },
+  sort: '-createdAt',
+  limit: 20,
+  page: 1,
+  depth: 1,
+}, 3*1000)
+ console.log(res)

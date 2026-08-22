@@ -14,39 +14,11 @@ const kernel = await KernelCMS({ core:{fogu:fogu, oneCms}})
         apiKey: process.env.KERNEL_API_KEY,
         cors: true,
         admin: true,
-        graphql: false,
+        graphql: true,
         // Local development: don't throttle yourself. Production (`kernel start`)
         // keeps the default rate limiter on.
         rateLimit: { enabled: false }
       });
-//@ts-ignore
-      const originalFetch = server.fetch;
-//@ts-ignore
-server.fetch = async (req: Request) => {
-  const url = new URL(req.url);
-
-  // Bloquear API
-  if (
-    url.pathname === "/api" ||
-    url.pathname.startsWith("/api")
-  ) {
-    return new Response("Not Found", {
-      status: 404,
-    });
-  }
-
-  // Bloquear GraphQL
-  if (
-    url.pathname === "/graphql" ||
-    url.pathname.startsWith("/graphql/")
-  ) {
-    return new Response("Not Found", {
-      status: 404,
-    });
-  }
-
-  return originalFetch(req);
-};
 
       oneCms.act("cms.create",async(params:any,ctx:any)=>{
         try {
