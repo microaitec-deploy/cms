@@ -1,0 +1,20 @@
+{
+  "name": "kernelpg",
+  "module": "src/index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun --watch .",
+    "start": "bun ."
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "kernelcms": "^0.44.1",
+    "pg": "^8.23.0"
+  }
+}
