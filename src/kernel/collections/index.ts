@@ -20,6 +20,8 @@ import proposal from "./proposal"
 import testimonial from "./testimonial"
 import client from "./client"
 import feature from "./feature"
+import contact from "./contact-message"
+import requisition from "./requisitions"
 import type { CollectionConfig } from "kernelcms"
 
 
@@ -45,6 +47,8 @@ export const collections=({core={}}:any):CollectionConfig[]=>[
     testimonial({core}) as CollectionConfig,
     client({core}) as CollectionConfig,
     feature({core}) as CollectionConfig,
-    orgnization({core}) as CollectionConfig
+    orgnization({core}) as CollectionConfig,
+    contact({core}) as CollectionConfig,
+    requisition({core}) as CollectionConfig
   
     ]
